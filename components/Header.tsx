@@ -1,20 +1,20 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
+  const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname;
 
-  let left = (
+  const left = (
     <div className="left">
       <Link href="/">
-        <a className="bold" data-active={isActive("/")}>
+        <a className="bold" data-active={isActive('/')}>
           Feed
         </a>
       </Link>
-      <style jsx>{`
+      <style jsx>
+        {`
         .bold {
           font-weight: bold;
         }
@@ -32,23 +32,27 @@ const Header: React.FC = () => {
         a + a {
           margin-left: 1rem;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   );
 
-  let right = null;
+  const right = null;
 
   return (
     <nav>
       {left}
       {right}
-      <style jsx>{`
+      <style jsx>
+        {`
         nav {
           display: flex;
           padding: 2rem;
           align-items: center;
         }
-      `}</style>
+      `}
+
+      </style>
     </nav>
   );
 };

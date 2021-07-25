@@ -1,5 +1,7 @@
+import { IUser } from './User';
+
 export interface IPost {
-    title: string;
-    author: { name: string };
-    content?: string;
+  title: string;
+  content?: string;
+  author?: IUser;
 }

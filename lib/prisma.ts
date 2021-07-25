@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 // lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
