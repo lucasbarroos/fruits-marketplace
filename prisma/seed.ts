@@ -2,32 +2,27 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+// eslint-disable-next-line import/prefer-default-export
 export const seed = async () => {
-  const user = {
-    name: 'First User',
-    phone: '00000000000',
-    password: '12345678',
-  };
-
   await prisma.user.upsert({
     where: {
-      name: user.name,
+      phone: '00000000000',
     },
     update: {},
     create: {
-      ...user,
+      name: 'Albert Einstein',
+      phone: '00000000000',
+      password: '12345678',
     },
   });
 };
 
 seed()
-  .then(() => {
-    console.log("Seeding the files");
-  })
   .catch((err) => {
-    console.log("Error seeding the files", err);
+    console.log('Error seeding', err);
+    process.exit(1);
   })
-  .finally(() => {
-    console.log("Finishing the database connection!");
-    database.$disconnect();
+  .finally(async () => {
+    console.log('Finishing the database connection!');
+    await prisma.$disconnect();
   });
