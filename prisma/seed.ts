@@ -1,9 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 
+import { generatePasswordHash } from '../utils/authHelper';
+
 const prisma = new PrismaClient();
 
 // eslint-disable-next-line import/prefer-default-export
-const runSeed = async () => {
+export const runSeed = async () => {
   await prisma.user.upsert({
     where: {
       phone: '00000000000',
@@ -12,9 +14,13 @@ const runSeed = async () => {
     create: {
       name: 'Albert Einstein',
       phone: '00000000000',
-      password: '12345678',
+      password: await generatePasswordHash('12345678'),
     },
   });
 };
 
-export default runSeed;
+runSeed().catch((err) => {
+  throw err;
+}).finally(() => {
+  prisma.$disconnect();
+});
