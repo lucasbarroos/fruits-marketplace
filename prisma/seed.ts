@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // eslint-disable-next-line import/prefer-default-export
-export const seed = async () => {
+const runSeed = async () => {
   await prisma.user.upsert({
     where: {
       phone: '00000000000',
@@ -17,12 +17,4 @@ export const seed = async () => {
   });
 };
 
-seed()
-  .catch((err) => {
-    console.log('Error seeding', err);
-    process.exit(1);
-  })
-  .finally(async () => {
-    console.log('Finishing the database connection!');
-    await prisma.$disconnect();
-  });
+export default runSeed;
