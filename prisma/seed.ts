@@ -4,7 +4,6 @@ import { generatePasswordHash } from '../utils/authHelper';
 
 const prisma = new PrismaClient();
 
-// eslint-disable-next-line import/prefer-default-export
 export const runSeed = async () => {
   await prisma.user.upsert({
     where: {
