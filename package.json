@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "create-database": "npx prisma db push",
-    "migrate": "npx prisma migrate",
+    "migrate": "npx prisma migrate dev migrating",
     "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
     "seed": "npx prisma db seed --preview-feature",
     "studio": "npx prisma studio"

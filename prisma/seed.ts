@@ -5,7 +5,7 @@ import { generatePasswordHash } from '../utils/authHelper';
 const prisma = new PrismaClient();
 
 export const runSeed = async () => {
-  await prisma.user.upsert({
+  const user = await prisma.user.upsert({
     where: {
       phone: '00000000000',
     },
@@ -14,6 +14,18 @@ export const runSeed = async () => {
       name: 'Albert Einstein',
       phone: '00000000000',
       password: await generatePasswordHash('12345678'),
+    },
+  });
+
+  await prisma.post.upsert({
+    where: {
+      title: 'Green Apple',
+    },
+    update: {},
+    create: {
+      title: 'Green Apple',
+      content: 'A very rare apple, juicy and delicious to complete your diet.',
+      authorId: user.id,
     },
   });
 };
