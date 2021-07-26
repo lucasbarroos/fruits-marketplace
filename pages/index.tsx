@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import Layout from '../components/Layout';
-import Post, { PostProps } from '../components/Post';
+import Post from '../components/Post';
 import prisma from '../lib/prisma';
 import {
   Container,
@@ -18,18 +18,14 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { feed } };
 };
 
-type Props = {
-  feed: PostProps[]
-}
-
-const Blog: React.FC<Props> = ({ feed }: { feed: any[]}) => (
+const Blog = ({ feed }: { feed: any[]}) => (
   <Layout>
     <Container className="page">
       <h1>Public Feed</h1>
       <main>
         {feed && feed.map((post) => (
           <div key={post.id} className="post">
-            <Post post={post} />
+            <Post id={post.id} title={post.title} content={post.content} author={post.author} />
           </div>
         ))}
       </main>
