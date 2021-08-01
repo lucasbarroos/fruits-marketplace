@@ -1,8 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
-import Layout from '../components/Layout';
-import Post from '../components/Post';
 import prisma from '../lib/prisma';
+import Hero from '../components/Hero';
 import {
   Container,
 } from './styles';
@@ -18,19 +17,10 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { feed } };
 };
 
-const Blog = ({ feed }: { feed: any[]}) => (
-  <Layout>
-    <Container className="page">
-      <h1>Public Feed</h1>
-      <main>
-        {feed && feed.map((post) => (
-          <div key={post.id} className="post">
-            <Post id={post.id} title={post.title} content={post.content} author={post.author} />
-          </div>
-        ))}
-      </main>
-    </Container>
-  </Layout>
+const Home = ({ feed }: { feed: any[]}) => (
+  <Container>
+    <Hero />
+  </Container>
 );
 
-export default Blog;
+export default Home;

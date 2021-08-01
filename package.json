@@ -20,7 +20,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
-    "next": "9.5.5",
+    "next": "^11.0.1",
     "prisma": "2.27.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",

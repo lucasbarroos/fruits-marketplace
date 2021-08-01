@@ -1,8 +1,6 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import ReactMarkdown from 'react-markdown';
-import Layout from '../../components/Layout';
-import { PostProps } from '../../components/Post';
 import prisma from '../../lib/prisma';
 import { IPost } from '../../utils/interfaces/Post';
 
@@ -22,8 +20,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const Post: React.FC<PostProps> = ({ title, author, content }: IPost) => (
-  <Layout>
+const Post = ({ title, author, content }: IPost) => (
+  <div>
     <div>
       <h2>{title}</h2>
       <p>
@@ -57,7 +55,7 @@ const Post: React.FC<PostProps> = ({ title, author, content }: IPost) => (
       `}
 
     </style>
-  </Layout>
+  </div>
 );
 
 export default Post;
